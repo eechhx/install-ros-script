@@ -3,5 +3,5 @@ ROS Melodic Morena Installation Script for Ubuntu 18.04 (McMaster University Spe
 
 ### Installation
 ```
-wget https://git.io/JJf39 && chmod u+x install_ros.sh && ./install_ros.sh
+wget https://raw.githubusercontent.com/eechhx/install-ros-script/master/install_ros.sh && chmod u+x install_ros.sh && ./install_ros.sh
 ```
