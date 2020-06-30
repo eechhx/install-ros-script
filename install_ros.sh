@@ -69,7 +69,11 @@ catkin_init_workspace
 cd $HOME/$name_catkin_workspace
 catkin_make
 
+echo "[INFO] Sourcing catkin_workspace"
 printf "\nsource ~/$name_catkin_workspace/devel/setup.bash" >> $HOME/.bashrc
+
+echo "[INFO] Exporting SVGA for VMware"
+printf "\nexport SVGA_VGPU10=0" >> $HOME/.bashrc
 
 echo "[INFO] Finished Full Installation"
 
