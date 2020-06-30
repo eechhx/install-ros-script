@@ -1,7 +1,6 @@
 #!/bin/bash
 #Author: Eech Hsiao 
 
-
 echo ""
 echo "[INFO] Required OS Version >>> Ubuntu 18.04 (Bionic Beaver)"
 echo "[INFO] Target ROS Version  >>> ROS Melodic Morena"
@@ -74,6 +73,9 @@ printf "\nsource ~/$name_catkin_workspace/devel/setup.bash" >> $HOME/.bashrc
 
 echo "[INFO] Exporting SVGA for VMware"
 printf "\nexport SVGA_VGPU10=0" >> $HOME/.bashrc
+
+echo "[INFO] Fixing Gazebo REST Request Error"
+sed -i -e 's,https://api.ignitionfuel.org,https://api.ignitionrobotics.org,g' ~/.ignition/fuel/config.yaml
 
 echo "[INFO] Finished Full Installation"
 
