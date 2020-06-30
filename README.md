@@ -1,5 +1,6 @@
 # install-ros-script
 ROS Melodic Morena Installation Script for Ubuntu 18.04 (McMaster University Specific)
+Designed for a fresh installation of Ubuntu 18.04
 
 ### Installation
 ```
