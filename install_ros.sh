@@ -44,13 +44,13 @@ sudo apt install -y \
     python-wstool \
     librealsense2-dkms \
     librealsense2-utils \
-    librealsense2-devs \
-    ros-$ROS_DISTRO-desktop-full \
+    librealsense2-dev \
     ros-$ROS_DISTRO-joint-state-publisher-gui \
     ros-$ROS_DISTRO-ros-controllers \
     ros-$ROS_DISTRO-gmapping \
     ros-$ROS_DISTRO-navigation \
-    ros-$ROS_DISTRO-ddynamic-reconfigure 
+    ros-$ROS_DISTRO-ddynamic-reconfigure \
+    ros-$ROS_DISTRO-desktop-full
 
 # Initialize and Update rosdep 
 if [ ! -e /etc/ros/rosdep/sources.list.d/20-default.list ]; then
