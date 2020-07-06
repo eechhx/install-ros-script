@@ -44,6 +44,7 @@ sudo apt install -y \
     librealsense2-dkms \
     librealsense2-utils \
     librealsense2-dev \
+    ros-$ROS_DISTRO-teleop-twist-keyboard \
     ros-$ROS_DISTRO-joint-state-publisher-gui \
     ros-$ROS_DISTRO-ros-controllers \
     ros-$ROS_DISTRO-gmapping \
@@ -76,6 +77,17 @@ printf "\nexport SVGA_VGPU10=0" >> $HOME/.bashrc
 
 echo "[INFO] Fixing Gazebo REST Request Error"
 sed -i -e 's,https://api.ignitionfuel.org,https://api.ignitionrobotics.org,g' ~/.ignition/fuel/config.yaml
+
+echo "[INFO] Git Clone RealSense Gazebo / ROS"
+cd $HOME/$name_catkin_workspace/src
+wget https://raw.githubusercontent.com/eechhx/install-ros-script/master/_d435.gazebo.xacro
+wget https://raw.githubusercontent.com/eechhx/install-ros-script/master/_d435.urdf.xacro
+git clone https://github.com/pal-robotics/realsense_gazebo_plugin.git
+git clone https://github.com/IntelRealSense/realsense-ros.git
+
+echo "[INFO] Moving and Replacing d435 Files"
+mv -f $HOME/$name_catkin_workspace/src/_d435.urdf.xacro $HOME/$name_catkin_workspace/src/realsense2_description/urdf
+mv -f $HOME/$name_catkin_workspace/src/_d435.gazebo.xacro $HOME/$name_catkin_workspace/src/realsense2_description/urdf
 
 echo "[INFO] Finished Full Installation"
 
