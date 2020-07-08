@@ -23,17 +23,13 @@ fi
 echo "[INFO] Downloading ROS Keys"
 sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
+echo "[INFO] Downloading Intel RealSense Keys"
+sudo apt-key adv --keyserver keys.gnupg.net --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+
 echo "[INFO] Adding Intel RealSense Repository"
 if [ ! -e /etc/apt/sources.list.d/danielrichter2007-ubuntu-grub-customizer-bionic.list ]; then
     sudo add-apt-repository "deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo bionic main" -u
 fi
-
-echo "[INFO] Downloading Intel RealSense Keys"
-sudo apt-key adv --keyserver keys.gnupg.net --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
-
-echo "[INFO] Update and Upgrade Packages"
-sudo apt-get update -y
-sudo apt-get dist-upgrade -y
 
 echo "[INFO] Installing ROS and Other Packages"
 sudo apt install -y \
@@ -86,8 +82,12 @@ git clone https://github.com/pal-robotics/realsense_gazebo_plugin.git
 git clone https://github.com/IntelRealSense/realsense-ros.git
 
 echo "[INFO] Moving and Replacing d435 Files"
-mv -f $HOME/$name_catkin_workspace/src/_d435.urdf.xacro $HOME/$name_catkin_workspace/src/realsense2_description/urdf
-mv -f $HOME/$name_catkin_workspace/src/_d435.gazebo.xacro $HOME/$name_catkin_workspace/src/realsense2_description/urdf
+mv -f $HOME/$name_catkin_workspace/src/_d435.urdf.xacro $HOME/$name_catkin_workspace/src/realsense-ros/realsense2_description/urdf
+mv -f $HOME/$name_catkin_workspace/src/_d435.gazebo.xacro $HOME/$name_catkin_workspace/src/realsense-ros/realsense2_description/urdf
+
+echo "[INFO] Update and Upgrade Packages"
+sudo apt-get update -y
+sudo apt-get dist-upgrade -y
 
 echo "[INFO] Finished Full Installation"
 
