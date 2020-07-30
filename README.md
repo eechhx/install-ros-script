@@ -8,5 +8,5 @@ wget https://raw.githubusercontent.com/eechhx/install-ros-script/master/install_
 ```
 ### Install Script for MacBoT ROS Jetson 
 ```
-TODO: Finish writing script install_ros_macbot.sh
+wget https://raw.githubusercontent.com/eechhx/install-ros-script/master/install_ros_jetson.sh && chmod u+x install_ros_jetson.sh && ./install_ros_jetson.sh
 ```
