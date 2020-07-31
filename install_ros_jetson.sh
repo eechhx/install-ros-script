@@ -5,7 +5,7 @@ echo ""
 echo "[INFO] Required OS Version >>> Ubuntu 18.04 (Bionic Beaver)"
 echo "[INFO] Target ROS Version  >>> ROS Melodic Morena"
 echo "[INFO] Catkin Workspace    >>> $HOME/catkin_ws"
-echo "THIS INSTALL SCRIPT IS FOR DESIGNED SPECIFICALLY FOR McMASTER MACBOT JETSON"
+echo "THIS INSTALL SCRIPT IS FOR DESIGNED SPECIFICALLY FOR McMASTER MACBOT JETSON NANO"
 echo "IF YOU WANT TO CANCEL, PRESS [CTRL] + [C]"
 read -p "PRESS ENTER TO CONTINUE"
 
@@ -34,9 +34,11 @@ fi
 echo "[INFO] Installing ROS and Other Packages"
 sudo apt install -y \
     python-rosdep \
-    librealsense2-dkms \
+    apt-utils \
     librealsense2-utils \
     librealsense2-dev \
+    ros-$ROS_DISTRO-realsense2-camera \
+    ros-$ROS_DISTRO-teleop-twist-keyboard \
     ros-$ROS_DISTRO-ros-controllers \
     ros-$ROS_DISTRO-gmapping \
     ros-$ROS_DISTRO-navigation \
