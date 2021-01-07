@@ -89,6 +89,15 @@ echo "[INFO] Update and Upgrade Packages"
 sudo apt-get update -y
 sudo apt-get dist-upgrade -y
 
-echo "[INFO] Finished Full Installation"
+echo "[INFO] Working with Python3 on ROS Melodic without ROS bridge"
+echo "[INFO] May need further testing, but should be OK"
+sudo apt-get install -y \
+    python3-pip \
+    python3-all-dev \
+    python3-rospkg \
+    ros-$ROS_DISTRO-desktop-full --fix-missing \
+    ros-$ROS_DISTRO-teleop-twist-keyboard \
+    ros-$ROS_DISTRO-ddynamic-reconfigure 
 
+echo "[INFO] Finished Full Installation"
 exit 0
