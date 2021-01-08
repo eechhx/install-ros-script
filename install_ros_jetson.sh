@@ -67,6 +67,20 @@ printf "\nsource ~/$name_catkin_workspace/devel/setup.bash" >> $HOME/.bashrc
 echo "[INFO] Fixing Gazebo REST Request Error"
 sed -i -e 's,https://api.ignitionfuel.org,https://api.ignitionrobotics.org,g' ~/.ignition/fuel/config.yaml
 
+echo "[INFO] Git clone RealSense Gazebo / ROS"
+cd $HOME/$name_catkin_workspace/src
+wget https://raw.githubusercontent.com/eechhx/install-ros-script/master/_d435.gazebo.xacro
+wget https://raw.githubusercontent.com/eechhx/install-ros-script/master/_d435.urdf.xacro
+git clone https://github.com/pal-robotics/realsense_gazebo_plugin.git
+git clone https://github.com/IntelRealSense/realsense-ros.git
+
+echo "[INFO] Moving and Replacing d435 Files"
+mv -f $HOME/$name_catkin_workspace/src/_d435.urdf.xacro $HOME/$name_catkin_workspace/src/realsense-ros/realsense2_description/urdf
+mv -f $HOME/$name_catkin_workspace/src/_d435.gazebo.xacro $HOME/$name_catkin_workspace/src/realsense-ros/realsense2_description/urdf
+
+echo "[INFO] Git clone diff_drive ROS package"
+git clone https://github.com/merose/diff_drive.git
+
 echo "[INFO] Update and Upgrade Packages"
 sudo apt-get update -y
 sudo apt-get dist-upgrade -y
