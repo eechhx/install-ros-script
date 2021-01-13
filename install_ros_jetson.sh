@@ -42,7 +42,18 @@ sudo apt install -y \
     ros-$ROS_DISTRO-ros-controllers \
     ros-$ROS_DISTRO-gmapping \
     ros-$ROS_DISTRO-navigation \
-    ros-$ROS_DISTRO-desktop-full
+    ros-$ROS_DISTRO-urdf \
+    ros-$ROS_DISTRO-gazebo-ros \
+    ros-$ROS_DISTRO-xacro \
+    ros-$ROS_DISTRO-geometry \
+    ros-$ROS_DISTRO-geometry-msgs \
+    ros-$ROS_DISTRO-sensor-msgs \
+    ros-$ROS_DISTRO-image-transport \
+    ros-$ROS_DISTRO-dynamic-reconfigure \
+    ros-$ROS_DISTRO-diagnostic-updater \
+    ros-$ROS_DISTRO-nodelet-core \
+    ros-$ROS_DISTRO-camera-info-manager \
+    ros-$ROS_DISTRO-ros-base
 
 # Initialize and Update rosdep 
 if [ ! -e /etc/ros/rosdep/sources.list.d/20-default.list ]; then
@@ -84,6 +95,10 @@ git clone https://github.com/merose/diff_drive.git
 echo "[INFO] Update and Upgrade Packages"
 sudo apt-get update -y
 sudo apt-get dist-upgrade -y
+
+echo "[INFO] Jetson Nano uses OpenCV4. Temp solution of downgrading to OpenCV3 for compatability with vision_opencv/cv_bridge [melodic-branch]"
+sudo apt -y --allow-downgrades install libopencv-dev=3.2.0+dfsg-4ubuntu0.1
+sudo apt-mark hold libopencv-dev
 
 echo "[INFO] Finished Full Installation"
 
