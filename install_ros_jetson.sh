@@ -55,6 +55,7 @@ sudo apt install -y \
     ros-$ROS_DISTRO-camera-info-manager \
     ros-$ROS_DISTRO-perception-pcl \
     ros-$ROS_DISTRO-csm \
+    ros-$ROS_DISTRO-gmapping \
     ros-$ROS_DISTRO-ros-base
 
 # Initialize and Update rosdep 
